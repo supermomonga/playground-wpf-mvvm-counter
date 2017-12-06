@@ -1,0 +1,33 @@
+﻿<Window x:Class="OkaneHoshii.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OkaneHoshii"
+        xmlns:vm="clr-namespace:OkaneHoshii.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <vm:MainWindowViewModel></vm:MainWindowViewModel>
+    </Window.DataContext>
+    <Grid ShowGridLines="True">
+        <Grid.Resources>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Margin" Value="5,5,0,5"></Setter>
+                <Setter Property="Padding" Value="5,1"></Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button x:Name="StartButton" Content="Start" Width="Auto" Command="{Binding Path=StartCommand}"></Button>
+            <Button x:Name="StopButton" Content="Stop" Width="Auto" Command="{Binding Path=StopCommand}"></Button>
+            <Button x:Name="ResetCountButton" Content="Reset Counter" Width="Auto" Command="{Binding Path=ResetCounterCommand}"></Button>
+            <Label Content="Count:"></Label>
+            <Label Content="{Binding Path=Count, Mode=OneWay}"></Label>
+        </StackPanel>
+        <TextBox x:Name="LogTextBox" Grid.Row="1" Margin="5" Text="{Binding Path=Log, Mode=OneWay}"></TextBox>
+    </Grid>
+</Window>

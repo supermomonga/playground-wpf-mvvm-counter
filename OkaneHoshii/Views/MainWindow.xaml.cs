@@ -12,14 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OkaneHoshii.ViewModels;
 
-namespace OkaneHoshii
+namespace OkaneHoshii.Views
 {
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window
     {
+        internal bool IsLogging { get; set; } = false;
+        internal MainWindowViewModel Vm = new MainWindowViewModel();
         public MainWindow()
         {
             InitializeComponent();
